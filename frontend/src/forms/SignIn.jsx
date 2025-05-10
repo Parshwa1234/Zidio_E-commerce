@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import signin_schema from "../schemas/signinSchema";
 
-const SignIn = () => {
+const SignIn = ({setIsLoggedIn}) => {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const {
@@ -30,6 +30,7 @@ const SignIn = () => {
         // Store user data in localStorage
         localStorage.setItem('user', JSON.stringify(result.user));
         // Redirect to home page
+        setIsLoggedIn(true);
         navigate('/');
       } else {
         setError(result.message || 'Login failed');

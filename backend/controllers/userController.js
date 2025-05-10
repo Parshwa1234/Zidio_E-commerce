@@ -2,6 +2,7 @@ import User from "../models/userModel.js";
 import bcrypt from "bcrypt";
 import generateToken from "../utils/generateToken.js";
 
+
 // Sign up user
 export const signup = async (req, res) => {
   try {
@@ -34,6 +35,7 @@ export const signup = async (req, res) => {
       sameSite: "strict",
       maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     });
+
 
     // Send response
     res.status(201).json({
@@ -89,6 +91,7 @@ export const signin = async (req, res) => {
       sameSite: "strict",
       maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     });
+
 
     // Send response
     res.status(200).json({

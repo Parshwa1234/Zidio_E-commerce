@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import signup_schema from "../schemas/signupSchema";
 import { useState } from "react";
 
-const SignUp = () => {
+const SignUp = ({setIsLoggedIn}) => {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -39,6 +39,7 @@ const SignUp = () => {
 
       if (result.success) {
         localStorage.setItem('user', JSON.stringify(result.user));
+        setIsLoggedIn(true);
         navigate('/');
       } else {
         if (result.errors) {
